@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
 
 const index: React.FC = () => {
-  return (<>Home</>)
-}
+  return (
+    <>
+      {/* <JKAppContainer></JKAppContainer> */}
+      HOMEE
+    </>
+  );
+};
 
 export default index;

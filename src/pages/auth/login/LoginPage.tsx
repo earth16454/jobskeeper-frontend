@@ -3,6 +3,9 @@ import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import React from 'react';
 import { LoginFormInterface } from '../interface';
 import { useNavigate } from 'react-router';
+import { setCurrentRole } from '@/store/slices/accountSlice';
+import { useAppDispatch } from '@/hooks/useStore';
+import useCheckLogin from '@/hooks/useCheckLogin';
 
 const { Link, Title } = Typography;
 const { Content, AuthFormWrapper } = AuthLayout;
@@ -10,10 +13,15 @@ const { Content, AuthFormWrapper } = AuthLayout;
 const LoginPage: React.FC = () => {
   const [form] = Form.useForm<LoginFormInterface>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  // const { currentRole } = useAppSelector(({ auth }) => auth);
 
   const onFinish = (value: LoginFormInterface) => {
     console.log('value:', value);
+    dispatch(setCurrentRole({ name: 'member', code: 'MEMBER' }));
   };
+
+  useCheckLogin();
 
   return (
     <AuthLayout>
@@ -24,7 +32,7 @@ const LoginPage: React.FC = () => {
             <Form.Item
               label="Email"
               name="email"
-              rules={[{ required: true, message: 'Please enter a valid email address' }]}
+              rules={[{ required: true, message: 'Please enter a valid email address' }, { type: 'email' }]}
             >
               <Input placeholder="Email"></Input>
             </Form.Item>
