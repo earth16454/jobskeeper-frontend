@@ -1,0 +1,20 @@
+﻿/* #jk-layout-content-main {
+  height: calc(100vh - 10px);
+} */
+
+#jk-layout-content-main {
+  overflow: auto;
+  width: 100%;
+  padding: 12px 8px;
+  z-index: inherit;
+  height: calc(100vh - 64px);
+}
+
+@media (max-width: 576px) {
+  #jk-layout-content-main {
+    padding: 8px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    flex: 1;
+  }
+}

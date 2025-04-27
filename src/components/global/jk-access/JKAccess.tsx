@@ -7,8 +7,6 @@ const JKAccess: React.FC = () => {
   const { currentRole } = useAppSelector(({ auth }) => auth);
 
   const hasAccess = () => {
-    console.log("currentRole:", currentRole);
-    
     if (!currentRole) {
       return false;
     } else {
